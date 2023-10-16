@@ -1,0 +1,207 @@
+{% extends 'HD_base.html' %}
+{% load static %}
+{% block body %}
+
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="text-underline-remove" href="{% url 'head_dashboard' %}">Dashboard</a></li>
+          <li class="breadcrumb-item active text-md" aria-current="page">Employee Day Schedule</li>
+        </ol>
+      </nav>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-12 col-xl-12 grid-margin stretch-card">
+       
+            <div class="card" id="schedule-add" style="display: none;" >
+                <div class="card-body">
+                    <h4 class="card-title">Schedule employee day</h4>
+                    <form action="#" method="post" >
+
+                        {% csrf_token %}
+            
+    
+                        <div class="add-items d-flex ">
+                            <input type="time" class="form-control text-offwhite" name="#" placeholder="start time.." required id="timePicker1">
+                            <input type="time" class="form-control ml-2  text-offwhite" name="#"  placeholder="end time.." required id="timePicker2">  
+                            <button class=" btn btn-primary " type="submit">Add</button> 
+                        </div>
+                        <div class="d-flex add-items">
+                        
+                            <input type="text" class="form-control text-offwhite" id="time1" readonly>
+                            <input type="text" class="form-control text-offwhite ml-2" id="time2" readonly>
+                        </div>
+                        <div class="form-group add-items">
+                            <input type="text" class="form-control  text-offwhite" name="#"  placeholder="enter task head.." required>  
+                        </div>
+                        <div class="form-group add-items">
+                            <textarea  class="to-do-textarea  text-offwhite" placeholder="enter task.."></textarea>
+                        
+                        </div>
+                    
+                    </form>
+                    
+                </div>
+            </div>
+        
+    </div>
+
+    <div class="col-md-12 col-xl-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2 ">
+                    <h4 class="card-title">Employee Days List</h4>
+                    <button class="add btn btn-outline-primary mb-2"  id="schedule-btn">
+                        <span class="mdi mdi-plus-circle-outline mdi-18px"></span>
+                    </button> 
+                </div>
+
+                <div class="add-items d-flex ">
+                    <select class=" select-listbox" name="#" required id="empid">
+                        <option><span class="sechudule-name">Shebin Shaji</span></option>
+                        <option><span class="sechudule-name">Shebin Shaji</span></option>
+                    </select>
+
+                    <button class=" btn btn-primary " type="submit"><i class="mdi mdi-magnify mdi-18px"></i></button> 
+                </div>
+                
+                <div class="day-wrapper">
+                    <div class="card-schedule d-flex  justify-content-between">
+                        <h6>Sunday</h6>
+                        <p>Sun.08 2023</p>
+                    </div>
+                    <div class="card-schedule d-flex  justify-content-between">
+                        <h6>Saturday</h6>
+                        <p>Sat.07 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-xl-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Employee Schedule List</h4>
+                <div class="schedule-task-wrapper">
+                    <div class="sechedule-task d-flex">
+                        <div class="left-date-time">
+                            <p class="schedule-date">Aug. 10 2023</p>
+                            <div class="form-check form-check-primary">
+                                 <label class="form-check-label">
+                                <input class="checkbox" type="checkbox"> Time - 12:12 am to 02:05 pm
+                            </label>
+                            </div>
+                        </div>
+                        <div class="right-scheduletask d-flex">
+                            <div class="inner-schedule-content">
+                                <h6>Digital Marketing work</h6>
+                                <p>Filler text is text that shares some characteristics of a real written text, 
+                                    but is random or otherwise generated. 
+                                </p>
+                            </div>
+                            <div class="schedule-change">
+                                <a href="#" class="test-primary"><i class=" mdi mdi-pencil"></i></a>
+                                <a href="#" class="text-danger"><i class=" mdi mdi-close-box"></i></a>
+                            </div>
+                           
+
+                        </div>
+                    </div>
+                    <div class="sechedule-task d-flex">
+                        <div class="left-date-time">
+                            <p class="schedule-date">Aug. 10 2023</p>
+                            <div class="form-check form-check-primary">
+                                 <label class="form-check-label">
+                                <input class="checkbox" type="checkbox"> Time - 12:12 am to 02:05 pm
+                            </label>
+                            </div>
+                        </div>
+                        <div class="right-scheduletask d-flex">
+                            <div class="inner-schedule-content">
+                                <h6>Digital Marketing work</h6>
+                                <p>Filler text is text that shares some characteristics of a real written text, 
+                                    but is random or otherwise generated. 
+                                </p>
+                            </div>
+                            <div class="schedule-change">
+                                <a href="#" class="test-primary"><i class=" mdi mdi-pencil"></i></a>
+                                <a href="#" class="text-danger"><i class=" mdi mdi-close-box"></i></a>
+                            </div>
+                           
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#schedule-btn").click(function() {
+            // Toggle the card visibility
+            $("#schedule-add").toggle();
+
+            // Change the icon
+            $(this).find('span').toggleClass('mdi-plus-circle-outline mdi-minus-circle-outline');
+
+            // Toggle the btn-outline-danger class
+            $(this).toggleClass('btn-outline-primary btn-outline-danger');
+        });
+    });
+</script>
+
+
+
+<!-- Time format script-->
+
+
+<script>
+    const timePicker = document.getElementById('timePicker1');
+    const timePicke2 = document.getElementById('timePicker2');
+  
+    timePicker.addEventListener('change', () => {
+      // Get the selected time
+      const selectedTime = timePicker.value;
+      
+  
+      // Split hours and minutes
+      const [hours, minutes] = selectedTime.split(':');
+  
+      // Convert to 12-hour format
+      let formattedTime = `${(hours % 12) || 12}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
+  
+      // Update the input value with the formatted time
+      
+      document.getElementById('time1').value = formattedTime;
+
+    });
+
+    timePicker2.addEventListener('change', () => {
+        // Get the selected time
+        const selectedTime = timePicker2.value;
+        
+    
+        // Split hours and minutes
+        const [hours, minutes] = selectedTime.split(':');
+    
+        // Convert to 12-hour format
+        let formattedTime = `${(hours % 12) || 12}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
+    
+        // Update the input value with the formatted time
+        
+        document.getElementById('time2').value = formattedTime;
+
+      });
+  </script>
+
+{% endblock %}
